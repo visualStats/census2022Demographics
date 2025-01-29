@@ -1,0 +1,132 @@
+.pxwidget {
+    background-color: white;
+    position: relative;
+}
+
+.pxwidget canvas {
+    width: 100%;
+}
+
+.pxwidget .pxwidget-canvas-wrapper {
+    height: 70vh;
+}
+
+.pxwidget img {
+    display: block;
+    margin: auto;
+    max-width: 60%;
+    width: auto;
+}
+
+.pxwidget p {
+    width: 100%;
+}
+
+.pxwidget .dt-buttons {
+    margin-bottom: 5px;
+}
+
+.pxwidget .dataTables_filter {
+    clear: both;
+}
+
+.pxwidget.map .info {
+    padding: 6px 8px;
+    font-size: 14px;
+    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+
+.pxwidget.map .legend {
+    text-align: left;
+    line-height: 18px;
+    color: #555;
+}
+
+.pxwidget.map .legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+}
+
+.pxwidget .dataTables_scrollHead,
+.pxwidget .dataTables_scrollBody {
+    padding: 0;
+}
+
+.pxwidget .dataTable thead th {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: none;
+}
+
+table.table-bordered.dataTable.custom-table th:first-child, table.table-bordered.dataTable.custom-table th:first-child {
+    border-left: none;
+}
+
+.pxwidget .dataTable thead tr:first-child th:first-child {
+    border-left: 1px solid #ddd;
+}
+
+.pxwidget .dataTables_scrollHeadInner {
+    border-bottom: 1px solid #ddd;
+}
+
+
+/*If the device window is 575px or smaller*/
+
+@media (max-width: 575px) {
+    .pxwidget .pxwidget-canvas-wrapper {
+        height: 80vh;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+
+@media (min-width: 576px) {
+    .pxwidget .pxwidget-canvas-wrapper {
+        height: 80vh;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .pxwidget .pxwidget-canvas-wrapper {
+        height: 80vh;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .pxwidget .pxwidget-canvas-wrapper {
+        height: 60vh;
+    }
+}
+
+/* Extra Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .pxwidget .pxwidget-canvas-wrapper {
+        height: 70vh;
+    }
+}
+
+
+@media print {
+    /*  fix issue with multiple blank pages when widget is on the page, only happens for ChartJs 2.9.4, fixed in v3 onwards
+  https://stackoverflow.com/questions/74820718/chart-js-printing-a-webpage-containing-chart-js-canvas-prints-out-hundreds-of
+  backward compatibility for old widgets 
+  */
+    .pxwidget .chartjs-size-monitor {
+        position: fixed;
+
+    }
+}
+
+

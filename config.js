@@ -177,16 +177,12 @@ var config = {
                                         },
                                         "C03737V04485": {
                                             "category": {
-                                                "index": [
-                                                    "AGE0"
-                                                ]
+                                                "index": []
                                             }
                                         },
                                         "C03738V04487": {
                                             "category": {
-                                                "index": [
-                                                    "M"
-                                                ]
+                                                "index": []
                                             }
                                         }
                                     },

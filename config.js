@@ -237,7 +237,7 @@ var config = {
         "options": {
             "mode": "q",
             "geojson": null,
-            "identifier": null,
+            "identifier": "ED_GUID",
             "geometryType": "Polygon"
         },
         "baseMap": {

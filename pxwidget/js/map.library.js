@@ -19,7 +19,6 @@ pxWidget.map.maxValue = [];
  * @param {*} id 
  */
 pxWidget.map.draw = async function (id) {
-
     //retain height of div if widget redrawn for smooth rendering
     var height = pxWidget.jQuery('#' + id).height();
     if (height) {
@@ -515,7 +514,7 @@ pxWidget.map.compile = function (id) {
         }
         else {
             // Run the Ajax call
-            pxWidget.jQuery.ajax({
+            /* pxWidget.jQuery.ajax({
                 url: pxWidget.draw.params[id].options.geojson || pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
                 method: 'GET',
                 dataType: 'json',
@@ -524,6 +523,10 @@ pxWidget.map.compile = function (id) {
                 error: function (jqXHR, textStatus, errorThrown) {
                     pxWidget.draw.error(id, 'pxWidget.map.compile: invalid geoJSON url');
                 }
+            }); */
+
+            $.getJSON(pxWidget.draw.params[id].options.geojson, function (data) {
+                onSuccess(data);
             });
         }
 
@@ -641,7 +644,6 @@ pxWidget.map.addValues = function (id) {
 
     var allValues = [];
     pxWidget.jQuery.each(pxWidget.map.geojson[id].features, function (index, feature) {
-
         var identifier = pxWidget.draw.params[id].options.identifier ? feature.properties[pxWidget.draw.params[id].options.identifier] : feature.properties.code
         var guid = identifier;
 

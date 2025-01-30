@@ -20,7 +20,6 @@ pxWidget.draw.type.map = 'map';
  * @param {*} params 
  */
 pxWidget.draw.init = function (type, id, params, callback) {
-
   callback = callback || null;
 
   if (!id || !pxWidget.jQuery('#' + id).length) {

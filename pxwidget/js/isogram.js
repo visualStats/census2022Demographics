@@ -6,7 +6,7 @@ var pxWidget = pxWidget || {};
 pxWidget.debug = true; // Enable/Disable minified JS/CSS resources
 //pxWidget.root = 'https://cdn.jsdelivr.net/gh/visualStats/PxWidget@2.9.6/';
 //pxWidget.root = "http://127.0.0.1:5500/pxwidget/";
-pxWidget.root = "https://visualstats.github.io/gaaDemographics/";
+pxWidget.root = "https://visualstats.github.io/gaaDemographics/pxwidget/";
 
 
 

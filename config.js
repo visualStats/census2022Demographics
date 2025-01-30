@@ -135,6 +135,7 @@ var config = {
         "borders": true,
         "colorScale": "red",
         "tooltipTitle": null,
+        "showTooltipButton": true,
         "defaultContent": "..",
         "fullScreen": {
             "title": "View Fullscreen",
@@ -239,6 +240,134 @@ var config = {
             "geojson": null,
             "identifier": "ED_GUID",
             "geometryType": "Polygon"
+        },
+        "baseMap": {
+            "leaflet": [
+
+            ],
+            "esri": [
+                {
+                    "url": "https://utility.arcgis.com/usrsvcs/servers/88f1db9e4ae04df69e499223b8295843/rest/services/MapGeniePremiumWM/MapServer",
+                    "disclaimer": "You can use the OSi basemap layer only in conjunction with the CSO map widgets, all other rights are reserved by OSi."
+                }
+            ]
+        }
+    },
+    "edMap": {
+        "autoupdate": true,
+        "matrix": null,
+        "mapDimension": "C04172V04943",
+        "copyright": true,
+        "link": "https://data.cso.ie/table/SAP2022T1T1SA",
+        "title": null,
+        "borders": true,
+        "colorScale": "red",
+        "tooltipTitle": null,
+        "showTooltipButton": false,
+        "defaultContent": "..",
+        "fullScreen": {
+            "title": "View Fullscreen",
+            "titleCancel": "Exit Fullscreen"
+        },
+        "easyPrint": {
+            "title": "Download"
+        },
+        "data": {
+            "datasets": [
+                {
+                    "api": {
+                        "query": {
+                            "url": "https://ws.cso.ie/public/api.jsonrpc",
+                            "data": {
+                                "jsonrpc": "2.0",
+                                "method": "PxStat.Data.Cube_API.ReadDataset",
+                                "params": {
+                                    "class": "query",
+                                    "id": [
+                                        "STATISTIC",
+                                        "TLIST(A1)",
+                                        "C03737V04485",
+                                        "C03738V04487"
+                                    ],
+                                    "dimension": {
+                                        "STATISTIC": {
+                                            "category": {
+                                                "index": [
+                                                    "SAP2022T1T1C01"
+                                                ]
+                                            }
+                                        },
+                                        "TLIST(A1)": {
+                                            "category": {
+                                                "index": [
+                                                    "2022"
+                                                ]
+                                            }
+                                        },
+                                        "C03737V04485": {
+                                            "category": {
+                                                "index": []
+                                            }
+                                        },
+                                        "C03738V04487": {
+                                            "category": {
+                                                "index": []
+                                            }
+                                        }
+                                    },
+                                    "extension": {
+                                        "language": {
+                                            "code": "en"
+                                        },
+                                        "format": {
+                                            "type": "JSON-stat",
+                                            "version": "2.0"
+                                        },
+                                        "matrix": "SAP2022T1T1SA"
+                                    },
+                                    "version": "2.0",
+                                    "m2m": false
+                                }
+                            }
+                        },
+                        "response": {
+
+                        }
+                    },
+                    "fluidTime": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "metadata": {
+            "api": {
+                "query": {
+                    "url": "https://ws.cso.ie/public/api.jsonrpc",
+                    "data": {
+                        "jsonrpc": "2.0",
+                        "method": "PxStat.Data.Cube_API.ReadMetadata",
+                        "params": {
+                            "matrix": "SAP2022T1T1SA",
+                            "language": "en",
+                            "format": {
+                                "type": "JSON-stat",
+                                "version": "2.0"
+                            }
+                        },
+                        "version": "2.0"
+                    }
+                },
+                "response": {
+
+                }
+            }
+        },
+        "options": {
+            "mode": "q",
+            "geojson": null,
+            "identifier": "SA_GUID_2022",
+            "geometryType": "MultiPolygon"
         },
         "baseMap": {
             "leaflet": [

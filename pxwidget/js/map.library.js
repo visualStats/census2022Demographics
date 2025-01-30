@@ -14,6 +14,14 @@ pxWidget.map.values = [];
 pxWidget.map.minValue = [];
 pxWidget.map.maxValue = [];
 
+showEdBySa = function (guid) {
+    renderEdMap(guid);
+    /*  var modal = document.getElementById("ed-modal");
+     modal.setAttribute("data-guid", guid);
+     const myModal = new bootstrap.Modal(document.getElementById('ed-modal'));
+     myModal.show(); */
+}
+
 /**
  * Draw a pxWidget Chart
  * @param {*} id 
@@ -82,6 +90,21 @@ The parent outer function must be async
                 fillOpacity: 0.6
             },
             onEachFeature: function (feature, layer) {
+
+                // Highlight feature on hover
+                layer.on('mouseover', function () {
+                    layer.setStyle({
+                        "weight": 2
+                    });
+                });
+
+                // Reset the style when mouse leaves
+                layer.on('mouseout', function () {
+                    layer.setStyle({
+                        "weight": pxWidget.draw.params[id].borders ? 0.2 : 0
+                    });
+                });
+
                 coloursUsed.push(layer.options.fillColor);
                 var decimal = feature.properties.statistic ? pxWidget.map.jsonstat[id].Dimension({ role: "metric" })[0].Category(feature.properties.statistic).unit.decimals : null;
                 var value = null;
@@ -94,7 +117,18 @@ The parent outer function must be async
 
                 value = feature.properties.value || feature.properties.value === 0 ? pxWidget.formatNumber(feature.properties.value.toLocaleString(), decimal) : pxWidget.draw.params[id].defaultContent;
 
-                layer.bindPopup(
+                var popupContent = `<div>
+                <h6>${tooltipTitle}</h>
+                <p>${feature.properties.name} : <b>${value}</b></p>`;
+                popupContent += pxWidget.draw.params[id].showTooltipButton ? `<button class="btn btn-primary" onclick="showEdBySa('${feature.properties.ED_GUID}')">Breakdown by Small Area</button>` : '';
+                popupContent += "</div>";
+                layer.bindPopup(popupContent, { autoClose: false }).openPopup();
+
+
+
+
+
+                /* layer.bindPopup(
                     tooltipTitle +
                     feature.properties.name + " (" + feature.properties.time + ")" + ' : <b>' +
                     value + '</b> (' + feature.properties.unit + ')');
@@ -128,7 +162,7 @@ The parent outer function must be async
 
                     this.closePopup(popupAnchor);
 
-                });
+                }); */
             }
         }
 

@@ -131,7 +131,7 @@ var config = {
         "mapDimension": "C04167V04938",
         "copyright": true,
         "link": "https://data.cso.ie/table/SAP2022T1T1ED",
-        "title": "Population",
+        "title": null,
         "borders": true,
         "colorScale": "red",
         "tooltipTitle": null,
@@ -158,6 +158,7 @@ var config = {
                                     "id": [
                                         "STATISTIC",
                                         "TLIST(A1)",
+                                        "C04167V04938",
                                         "C03737V04485",
                                         "C03738V04487"
                                     ],
@@ -174,6 +175,11 @@ var config = {
                                                 "index": [
                                                     "2022"
                                                 ]
+                                            }
+                                        },
+                                        "C04167V04938": {
+                                            "category": {
+                                                "index": []
                                             }
                                         },
                                         "C03737V04485": {
@@ -286,6 +292,7 @@ var config = {
                                     "id": [
                                         "STATISTIC",
                                         "TLIST(A1)",
+                                        "C04172V04943",
                                         "C03737V04485",
                                         "C03738V04487"
                                     ],
@@ -302,6 +309,11 @@ var config = {
                                                 "index": [
                                                     "2022"
                                                 ]
+                                            }
+                                        },
+                                        "C04172V04943": {
+                                            "category": {
+                                                "index": []
                                             }
                                         },
                                         "C03737V04485": {

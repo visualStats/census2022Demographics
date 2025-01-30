@@ -14,12 +14,8 @@ pxWidget.map.values = [];
 pxWidget.map.minValue = [];
 pxWidget.map.maxValue = [];
 
-showEdBySa = function (guid) {
-    renderEdMap(guid);
-    /*  var modal = document.getElementById("ed-modal");
-     modal.setAttribute("data-guid", guid);
-     const myModal = new bootstrap.Modal(document.getElementById('ed-modal'));
-     myModal.show(); */
+showEdBySa = function (guid, areaName) {
+    renderEdMap(guid, areaName);
 }
 
 /**
@@ -120,7 +116,7 @@ The parent outer function must be async
                 var popupContent = `<div>
                 <h6>${tooltipTitle}</h>
                 <p>${feature.properties.name} : <b>${value}</b></p>`;
-                popupContent += pxWidget.draw.params[id].showTooltipButton ? `<button class="btn btn-primary" onclick="showEdBySa('${feature.properties.ED_GUID}')">Breakdown by Small Area</button>` : '';
+                popupContent += pxWidget.draw.params[id].showTooltipButton ? `<button class="btn btn-primary" onclick="showEdBySa('${feature.properties.ED_GUID}','${feature.properties.name}')">Breakdown by Small Area</button>` : '';
                 popupContent += "</div>";
                 layer.bindPopup(popupContent, { autoClose: false }).openPopup();
 
@@ -558,7 +554,6 @@ pxWidget.map.compile = function (id) {
                     pxWidget.draw.error(id, 'pxWidget.map.compile: invalid geoJSON url');
                 }
             }); */
-
             $.getJSON(pxWidget.draw.params[id].options.geojson, function (data) {
                 onSuccess(data);
             });

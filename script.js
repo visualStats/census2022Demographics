@@ -21,5 +21,6 @@ renderCountyMap = function () {
     mapConfig.options.geojson = "maps/counties/" + $("#select-county").val() + ".geojson";
     mapConfig.data.datasets[0].api.query.data.params.dimension["C03738V04487"].category.index = [$("#select-sex").val()];
     mapConfig.data.datasets[0].api.query.data.params.dimension["C03737V04485"].category.index = [$("#select-age").val()];
+
     pxWidget.draw.init("map", "county-map", mapConfig)
 }

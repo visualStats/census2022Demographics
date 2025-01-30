@@ -19,6 +19,7 @@ pxWidget.map.maxValue = [];
  * @param {*} id 
  */
 pxWidget.map.draw = async function (id) {
+
     //retain height of div if widget redrawn for smooth rendering
     var height = pxWidget.jQuery('#' + id).height();
     if (height) {
@@ -494,6 +495,7 @@ pxWidget.map.callback.readDatasetOnError = function (error, id) {
 };
 
 pxWidget.map.compile = function (id) {
+
     if (pxWidget.jQuery.isEmptyObject(pxWidget.draw.params[id].data.datasets[0].api.response)) {
         pxWidget.map.ajax.readDataset(id);
         // Avoid self-looping
@@ -508,7 +510,7 @@ pxWidget.map.compile = function (id) {
 
     if (pxWidget.map.jsonstat[id] && pxWidget.map.jsonstat[id].length) {
         if (pxWidget.draw.params[id].options.geojson && typeof pxWidget.draw.params[id].options.geojson === 'object') {
-            debugger
+
             onSuccess(pxWidget.draw.params[id].options.geojson);
         }
         else {
@@ -529,6 +531,7 @@ pxWidget.map.compile = function (id) {
             if (typeof response != "object") {
                 response = JSON.parse(response)
             }
+
             pxWidget.map.geojson[id] = response;
             pxWidget.map.addValues(id);
         }

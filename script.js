@@ -23,6 +23,8 @@ renderCountySelect = function () {
 }
 
 renderCountyMap = function () {
+    $("#spinner-overlay").fadeIn(); // Show the spinner overlay
+    $("#county-map-wrapper .card-header").text($("#select-county option:selected").text() + " - " + $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text());
     $("#county-map-wrapper").show();
     $('#county-map').empty();
     //get a list of ed'd for more efficient query
@@ -37,9 +39,12 @@ renderCountyMap = function () {
         mapConfig.data.datasets[0].api.query.data.params.dimension["C03738V04487"].category.index = [$("#select-sex").val()];
         mapConfig.data.datasets[0].api.query.data.params.dimension["C03737V04485"].category.index = [$("#select-age").val()];
         mapConfig.tooltipTitle = $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text();
-        pxWidget.draw.init("map", "county-map", mapConfig);
+        pxWidget.draw.init("map", "county-map", mapConfig, function () {
+            $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes
+        });
 
         $("#download-ed-data").on("click", function () {
+            $("#spinner-overlay").fadeIn(); // Show the spinner overlay
             var csvConfig = $.extend(true, {}, mapConfig.data.datasets[0].api.query.data);
             csvConfig.params.extension.format = {
                 "type": "CSV",
@@ -64,6 +69,9 @@ renderCountyMap = function () {
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                 },
+                complete: function () {
+                    $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes 
+                },
                 error: function (jqXHR, textStatus, errorThrown) {
 
                 }
@@ -77,7 +85,7 @@ renderCountyMap = function () {
 
 }
 renderEdMap = function (guid, areaName) {
-
+    $("#spinner-overlay").fadeIn(); // Show the spinner overlay
     $('#ed-map').empty();
 
     //get a list of ed'd for more efficient query
@@ -85,6 +93,7 @@ renderEdMap = function (guid, areaName) {
     $.getJSON("maps/eds/" + guid + ".geojson", function (data) {
         var edMapConfig = $.extend(true, {}, config.edMap);
         var myModal = new bootstrap.Modal(document.getElementById('ed-modal'));
+        $("#ed-modal .modal-title").text(areaName + " - " + $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text());
         myModal.show();
         var edMapConfig = $.extend(true, {}, config.edMap);
         $.each(data.features, function (index, feature) {
@@ -94,9 +103,12 @@ renderEdMap = function (guid, areaName) {
         edMapConfig.data.datasets[0].api.query.data.params.dimension["C03738V04487"].category.index = [$("#select-sex").val()];
         edMapConfig.data.datasets[0].api.query.data.params.dimension["C03737V04485"].category.index = [$("#select-age").val()];
         edMapConfig.tooltipTitle = $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text();
-        pxWidget.draw.init("map", "ed-map", edMapConfig);
+        pxWidget.draw.init("map", "ed-map", edMapConfig, function () {
+            $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes
+        });
 
         $("#download-sa-data").on("click", function () {
+            $("#spinner-overlay").fadeIn(); // Show the spinner overlay
             var csvConfig = $.extend(true, {}, edMapConfig.data.datasets[0].api.query.data);
             csvConfig.params.extension.format = {
                 "type": "CSV",
@@ -115,11 +127,14 @@ renderEdMap = function (guid, areaName) {
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement("a");
                     a.href = url;
-                    a.download = areaName + ".csv"; // File name
+                    a.download = areaName.replace(/[ ,]/g, '_').toLowerCase() + "_" + $("#select-sex option:selected").text().toLowerCase() + "_" + $("#select-age option:selected").text().toLowerCase() + ".csv"; // File name
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
+                },
+                complete: function () {
+                    $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 

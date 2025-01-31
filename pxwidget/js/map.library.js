@@ -116,7 +116,7 @@ The parent outer function must be async
                 var popupContent = `<div>
                 <h6>${tooltipTitle}</h>
                 <p>${feature.properties.name} : <b>${value}</b></p>`;
-                popupContent += pxWidget.draw.params[id].showTooltipButton ? `<button class="btn btn-primary" onclick="showEdBySa('${feature.properties.ED_GUID}','${feature.properties.name}')">Breakdown by Small Area</button>` : '';
+                popupContent += pxWidget.draw.params[id].showTooltipButton ? `<button class="btn btn-primary" onclick="showEdBySa('${feature.properties.ED_GUID}','${feature.properties.name}')">View Small Area Map</button>` : '';
                 popupContent += "</div>";
                 layer.bindPopup(popupContent, { autoClose: false }).openPopup();
 

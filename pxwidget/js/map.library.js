@@ -14,8 +14,8 @@ pxWidget.map.values = [];
 pxWidget.map.minValue = [];
 pxWidget.map.maxValue = [];
 
-showEdBySa = function (guid, areaName) {
-    renderEdMap(guid, areaName);
+showEdBySa = function (guid, areaName, value) {
+    renderEdMap(guid, areaName, value);
 }
 
 /**

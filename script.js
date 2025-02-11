@@ -43,7 +43,7 @@ renderCountyMap = function () {
             $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes
         });
 
-        $("#download-ed-data").one("click", function () {
+        $("#download-ed-data").one("", function () {
             $("#spinner-overlay").fadeIn(); // Show the spinner overlay
             var csvConfig = $.extend(true, {}, mapConfig.data.datasets[0].api.query.data);
             csvConfig.params.extension.format = {
@@ -65,7 +65,7 @@ renderCountyMap = function () {
                     a.href = url;
                     a.download = $("#select-county option:selected").text() + ".csv"; // File name
                     document.body.appendChild(a);
-                    a.click();
+                    a.();
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                 },
@@ -107,7 +107,7 @@ renderEdMap = function (guid, areaName, value) {
             $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes
         });
 
-        $("#download-sa-data").on("click", function () {
+        $("#download-sa-data").one("click", function () {
             $("#spinner-overlay").fadeIn(); // Show the spinner overlay
             var csvConfig = $.extend(true, {}, edMapConfig.data.datasets[0].api.query.data);
             csvConfig.params.extension.format = {

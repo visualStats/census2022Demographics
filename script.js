@@ -84,7 +84,7 @@ renderCountyMap = function () {
 
 
 }
-renderEdMap = function (guid, areaName) {
+renderEdMap = function (guid, areaName, value) {
     $("#spinner-overlay").fadeIn(); // Show the spinner overlay
     $('#ed-map').empty();
 
@@ -93,7 +93,7 @@ renderEdMap = function (guid, areaName) {
     $.getJSON("maps/eds/" + guid + ".geojson", function (data) {
         var edMapConfig = $.extend(true, {}, config.edMap);
         var myModal = new bootstrap.Modal(document.getElementById('ed-modal'));
-        $("#ed-modal .modal-title").text(areaName + " - " + $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text());
+        $("#ed-modal .modal-title").text(areaName + " - " + $("#select-sex option:selected").text() + " : " + $("#select-age option:selected").text() + " (Total : "+value+")");
         myModal.show();
         var edMapConfig = $.extend(true, {}, config.edMap);
         $.each(data.features, function (index, feature) {

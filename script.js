@@ -65,7 +65,7 @@ renderCountyMap = function () {
                     a.href = url;
                     a.download = $("#select-county option:selected").text() + ".csv"; // File name
                     document.body.appendChild(a);
-                    a.();
+                    a.click();
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                 },

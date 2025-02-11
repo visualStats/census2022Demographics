@@ -43,7 +43,7 @@ renderCountyMap = function () {
             $("#spinner-overlay").fadeOut(); // Hide spinner after AJAX completes
         });
 
-        $("#download-ed-data").on("click", function () {
+        $("#download-ed-data").one("click", function () {
             $("#spinner-overlay").fadeIn(); // Show the spinner overlay
             var csvConfig = $.extend(true, {}, mapConfig.data.datasets[0].api.query.data);
             csvConfig.params.extension.format = {

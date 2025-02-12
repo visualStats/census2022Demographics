@@ -61,10 +61,10 @@ downloadCountyCsv = function () {
         dataType: "json",
         data: JSON.stringify(csvConfig),
         success: function (response) {
-            const csvData = response.result; // Assuming response.result contains CSV text
-            const blob = new Blob([csvData], { type: "text/csv" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
+            var csvData = response.result; // Assuming response.result contains CSV text
+            var blob = new Blob([csvData], { type: "text/csv" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
             a.href = url;
             a.download = $("#select-county option:selected").text() + ".csv"; // File name
             document.body.appendChild(a);
@@ -79,7 +79,7 @@ downloadCountyCsv = function () {
 
         }
     });
-}
+};
 
 renderEdMap = function (guid, areaName, value) {
     edSelectedName = areaName;
@@ -121,10 +121,10 @@ downloadEdCsv = function () {
         dataType: "json",
         data: JSON.stringify(csvConfig),
         success: function (response) {
-            const csvData = response.result; // Assuming response.result contains CSV text
-            const blob = new Blob([csvData], { type: "text/csv" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
+            var csvData = response.result; // Assuming response.result contains CSV text
+            var blob = new Blob([csvData], { type: "text/csv" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
             a.href = url;
             a.download = edSelectedName.replace(/[ ,]/g, '_').toLowerCase() + "_" + $("#select-sex option:selected").text().toLowerCase() + "_" + $("#select-age option:selected").text().toLowerCase() + ".csv"; // File name
             document.body.appendChild(a);
